@@ -23,11 +23,11 @@ type MailTrapTo struct {
 }
 
 type MailTrapPayload struct {
-	From     From   `json:"from"`
-	To       To     `json:"to"`
-	Subject  string `json:"subject"`
-	Body     string `json:"body"`
-	Category string `json:"category"`
+	From     interface{} `json:"from"`
+	To       interface{} `json:"to"`
+	Subject  string      `json:"subject"`
+	Body     string      `json:"body"`
+	Category string      `json:"category"`
 }
 
 func (mtc MailTrapCredentials) SendEmail(metadata MailTrapPayload) (err error) {
