@@ -26,7 +26,7 @@ type MailTrapPayload struct {
 	From     interface{} `json:"from"`
 	To       interface{} `json:"to"`
 	Subject  string      `json:"subject"`
-	Body     string      `json:"body"`
+	Text     string      `json:"text"`
 	Category string      `json:"category"`
 }
 
