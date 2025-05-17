@@ -23,11 +23,11 @@ type MailTrapTo struct {
 }
 
 type MailTrapPayload struct {
-	From     interface{} `json:"from"`
-	To       interface{} `json:"to"`
-	Subject  string      `json:"subject"`
-	Text     string      `json:"text"`
-	Category string      `json:"category"`
+	From     any    `json:"from"`
+	To       any    `json:"to"`
+	Subject  string `json:"subject"`
+	Text     string `json:"text"`
+	Category string `json:"category"`
 }
 
 func (mtc MailTrapCredentials) SendEmail(metadata MailTrapPayload) (err error) {
@@ -35,12 +35,12 @@ func (mtc MailTrapCredentials) SendEmail(metadata MailTrapPayload) (err error) {
 	client := &http.Client{}
 	payload, err := json.Marshal(metadata)
 	if err != nil {
-		log.Fatalf("Cannot Marshal the payload!")
+		panic("Cannot Marshal the payload!")
 	}
 	ioPayload := strings.NewReader(string(payload))
 	request, err := http.NewRequest("POST", mtc.Url, ioPayload)
 	if err != nil {
-		log.Fatalf("%v", err)
+		panic(err)
 	}
 	request.Header.Set("Authorization", fmt.Sprintf("Bearer %s", mtc.Token))
 	request.Header.Set("Content-Type", "application/json")
