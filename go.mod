@@ -1,3 +1,3 @@
-module hsdeps
+module github.com/danilopsss/hsdeps
 
 go 1.24.2
