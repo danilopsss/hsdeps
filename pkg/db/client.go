@@ -21,7 +21,7 @@ func GetCredentials() *redis.Options {
 	username := os.Getenv("DB_USER")
 	pass := os.Getenv("DB_PASS")
 	port := os.Getenv("DB_PORT")
-	db, _ := strconv.Atoi(port)
+	db, _ := strconv.Atoi(os.Getenv("DB_NUMBER"))
 	return &redis.Options{
 		Username: username,
 		Addr:     fmt.Sprintf("%s:%s", host, port),
