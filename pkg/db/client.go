@@ -24,7 +24,7 @@ func GetCredentials() *redis.Options {
 	db, _ := strconv.Atoi(port)
 	return &redis.Options{
 		Username: username,
-		Addr:     fmt.Sprintf("%s:6379", host),
+		Addr:     fmt.Sprintf("%s:%s", host, port),
 		Password: pass,
 		DB:       db,
 	}
