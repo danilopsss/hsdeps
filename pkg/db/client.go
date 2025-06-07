@@ -2,6 +2,7 @@ package db
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 
@@ -22,6 +23,7 @@ func GetCredentials() *redis.Options {
 	pass := os.Getenv("DB_PASS")
 	port := os.Getenv("DB_PORT")
 	db, _ := strconv.Atoi(os.Getenv("DB_NUMBER"))
+	log.Printf("Creating connection: %s:%s", host, port)
 	return &redis.Options{
 		Username: username,
 		Addr:     fmt.Sprintf("%s:%s", host, port),
