@@ -12,14 +12,10 @@ type RedisCreds struct {
 }
 
 type Clients interface {
-	GetRedisClient(creds RedisCreds) (*redis.Client, error)
+	GetClient(creds RedisCreds) *redis.Client
 }
 
-type Databases struct {
-	Db Clients
-}
-
-func GetRedisClient(creds RedisCreds) *redis.Client {
+func GetClient(creds RedisCreds) *redis.Client {
 	redisOpt := &redis.Options{
 		Addr:     creds.Host,
 		Username: creds.User,
