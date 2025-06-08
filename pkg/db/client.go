@@ -21,12 +21,11 @@ func GetCredentials() *redis.Options {
 	host := os.Getenv("DB_HOST")
 	username := os.Getenv("DB_USER")
 	pass := os.Getenv("DB_PASS")
-	port := os.Getenv("DB_PORT")
 	db, _ := strconv.Atoi(os.Getenv("DB_NUMBER"))
-	log.Printf("Creating connection: %s:%s", host, port)
+	log.Printf("Creating connection: %s:6379", host)
 	return &redis.Options{
 		Username: username,
-		Addr:     fmt.Sprintf("%s:%s", host, port),
+		Addr:     fmt.Sprintf("%s:6379", host),
 		Password: pass,
 		DB:       db,
 	}
