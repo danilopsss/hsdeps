@@ -5,10 +5,10 @@ import (
 )
 
 type RedisCreds struct {
-	host string
-	user string
-	pass string
-	db   int
+	Host string
+	User string
+	Pass string
+	Db   int
 }
 
 type Clients interface {
@@ -16,15 +16,15 @@ type Clients interface {
 }
 
 type Databases struct {
-	db Clients
+	Db Clients
 }
 
 func GetRedisClient(r RedisCreds) *redis.Client {
 	redisOpt := &redis.Options{
-		Addr:     r.host,
-		Username: r.user,
-		Password: r.pass,
-		DB:       r.db,
+		Addr:     r.Host,
+		Username: r.User,
+		Password: r.Pass,
+		DB:       r.Db,
 	}
 	return redis.NewClient(redisOpt)
 }
