@@ -19,12 +19,12 @@ type Databases struct {
 	Db Clients
 }
 
-func GetRedisClient(r RedisCreds) *redis.Client {
+func GetRedisClient(creds RedisCreds) *redis.Client {
 	redisOpt := &redis.Options{
-		Addr:     r.Host,
-		Username: r.User,
-		Password: r.Pass,
-		DB:       r.Db,
+		Addr:     creds.Host,
+		Username: creds.User,
+		Password: creds.Pass,
+		DB:       creds.Db,
 	}
 	return redis.NewClient(redisOpt)
 }
